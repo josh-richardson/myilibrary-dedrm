@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<VBox prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="txtUrl" promptText="Enter a URL" />
+      <HBox prefHeight="62.0" prefWidth="1280.0">
+         <children>
+            <TextField fx:id="txtFileName" promptText="PDF file name">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" top="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="btnCookies" disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="154.0" text="Download book">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Label fx:id="lblInfo" text="Downloaded 0/0 pages">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <WebView fx:id="wbMain" minHeight="-1.0" minWidth="-1.0" prefHeight="2160.0" prefWidth="3840.0" />
+   </children>
+</VBox>
