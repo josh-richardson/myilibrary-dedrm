@@ -78,7 +78,7 @@ public class Controller implements Initializable {
                 }
 
                 int pageCount = Integer.parseInt(webpageSource.substring(webpageSource.indexOf("var pagecount") + 13, webpageSource.indexOf("var pagecount") + 21).replaceAll("[^0-9]", ""));
-
+                lblInfo.setText("Enumerated pages: " + String.valueOf(pageCount) + ". Waiting to download.");
                 Document document = new Document();
                 try {
                     PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
@@ -201,9 +201,9 @@ public class Controller implements Initializable {
         InputStream in = con.getInputStream();
         File dir = new File("output");
         if (dir.exists() || (!dir.exists() && dir.mkdir())) {
-            FileOutputStream out = new FileOutputStream(dir.getAbsolutePath() + "\\" + String.valueOf(page) + ".jpg");
+            FileOutputStream out = new FileOutputStream(dir.getAbsolutePath() + File.separator + String.valueOf(page) + ".jpg");
             int c;
-            byte[] b = new byte[1024];
+            byte[] b = new byte[8192];
             while ((c = in.read(b)) != -1)
                 out.write(b, 0, c);
             return true;
