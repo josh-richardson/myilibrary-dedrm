@@ -78,7 +78,7 @@ public class Controller implements Initializable {
                 }
 
                 int pageCount = Integer.parseInt(webpageSource.substring(webpageSource.indexOf("var pagecount") + 13, webpageSource.indexOf("var pagecount") + 21).replaceAll("[^0-9]", ""));
-                lblInfo.setText("Enumerated pages: " + String.valueOf(pageCount) + ". Waiting to download.");
+                Platform.runLater(() -> lblInfo.setText("Enumerated pages: " + String.valueOf(pageCount) + ". Waiting to download."));
                 Document document = new Document();
                 try {
                     PdfWriter.getInstance(document, new FileOutputStream(fileName + ".pdf"));
@@ -101,9 +101,9 @@ public class Controller implements Initializable {
                             e.printStackTrace();
                         }
                     });
-
+                    Platform.runLater(() -> lblInfo.setText("Rendering each page into a PDF file. This may take a long time."));
                     for (int i = 1; i <= pageCount; i++) {
-                        Image img = Image.getInstance("output\\" + String.valueOf(i) + ".jpg");
+                        Image img = Image.getInstance("output" + File.separator + String.valueOf(i) + ".jpg");
                         float scale = ((document.getPageSize().getWidth() - document.leftMargin() - document.rightMargin()) / img.getWidth()) * 100;
                         img.scalePercent(scale);
                         document.add(img);
